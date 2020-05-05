@@ -1,0 +1,29 @@
+body {
+  background-image: url("../images/background.jpg");
+  background-size: 1200px;
+}
+
+.main {
+  background-image: linear-gradient(to bottom right, red, rgb(104, 1, 1));
+}
+
+.title {
+  text-align: center;
+  font-family: "Righteous", cursive;
+}
+
+.lead {
+  text-align: center;
+  font-size: 30px;
+  font-family: "Jost", sans-serif;
+}
+
+.my-radio {
+  font-size: 20px;
+  font-family: "Jost", sans-serif;
+  margin-right: 25px;
+}
+
+.form-check {
+  text-align: center;
+}
