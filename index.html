@@ -17,29 +17,64 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container start">
+      <div class="jumbotron jumbotron-fluid text-center main">
+        <h1 class="display-4 title">Movie Trivia Game</h1>
+        <p class="lead" id="one">
+          Click the Start to begin the Movie Trivia Game!
+        </p>
+        <button type="button" class="btn btn-light">Start</button>
+      </div>
+    </div>
+    <div class="container game">
       <div class="jumbotron jumbotron-fluid main">
         <h1 class="display-4 title">Movie Trivia Game</h1>
-        <p class="lead" id="time-remaining">
-          Time Remaining:
-        </p>
+        <p class="lead" id="time-remaining"></p>
         <p class="lead" id="one">
           What was the first feature-length animated film to be released?
         </p>
         <div class="form-check">
-          <input class="form-check-input" type="radio" unchecked />
+          <input
+            class="form-check-input"
+            type="radio"
+            name="exampleRadios"
+            id="exampleRadios1"
+            value="incorrect"
+            unchecked
+          />
           <label class="form-check-label my-radio" for="incorrect">
             Lady and the Tramp
           </label>
-          <input class="form-check-input" type="radio" unchecked />
+          <input
+            class="form-check-input"
+            type="radio"
+            name="exampleRadios"
+            id="exampleRadios1"
+            value="correct"
+            unchecked
+          />
           <label class="form-check-label my-radio" for="correct">
             Snow White and the Seven Dwarfs
           </label>
-          <input class="form-check-input" type="radio" unchecked />
+          <input
+            class="form-check-input"
+            type="radio"
+            name="exampleRadios"
+            id="exampleRadios1"
+            value="incorrect"
+            unchecked
+          />
           <label class="form-check-label my-radio" for="incorrect">
             Pinocchio
           </label>
-          <input class="form-check-input" type="radio" unchecked />
+          <input
+            class="form-check-input"
+            type="radio"
+            name="exampleRadios"
+            id="exampleRadios1"
+            value="incorrect"
+            unchecked
+          />
           <label class="form-check-label my-radio" for="incorrect">
             Bambi
           </label>

@@ -1,6 +1,6 @@
 body {
   background-image: url("../images/background.jpg");
-  background-size: 1200px;
+  background-size: cover;
 }
 
 .main {
@@ -26,4 +26,13 @@ body {
 
 .form-check {
   text-align: center;
+}
+
+.btn {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.game {
+  display: none;
 }
