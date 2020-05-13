@@ -3,7 +3,6 @@ $(document).ready(function () {
   var timerId;
   var correct = 0;
   var incorrect = 0;
-  var unanswered = 0;
 
   var questions = [
     {
@@ -77,6 +76,7 @@ $(document).ready(function () {
       correctAnswer: "Jake Gyllenhaal",
     },
   ];
+
   var questionDiv = document.getElementById("two");
 
   for (var i = 0; i < questions.length; i++) {
@@ -87,11 +87,12 @@ $(document).ready(function () {
     for (var j = 0; j < questions[i].answers.length; j++) {
       var radioBtn = document.createElement("Input");
       radioBtn.setAttribute("type", "radio");
-      radioBtn.setAttribute("name", "title");
+      radioBtn.setAttribute("name", questions[i].title);
       radioBtn.setAttribute("style", "margin-right: 10px");
       radioBtn.setAttribute("value", questions[i].answers[j]);
       radioBtn.setAttribute("class", "buttonSelected");
       radioBtn.setAttribute("answer", questions[i].correctAnswer);
+      radioBtn.setAttribute("outcome", "blank");
       questionDiv.append(radioBtn);
       radioAnswers = $("<label>");
       radioAnswers.append(questions[i].answers[j]);
@@ -102,28 +103,38 @@ $(document).ready(function () {
       });
       radioAnswers.appendTo(questionDiv);
 
+      if (questions[i].correctAnswer === questions[i].answers[j]) {
+        radioBtn.setAttribute("outcome", "correct");
+      } else {
+        radioBtn.setAttribute("outcome", "incorrect");
+      }
+
       console.log(questions[i].answers[j]);
-      radioBtn.addEventListener("click", evaluate);
+
       console.log(radioBtn);
     }
   }
   function evaluate() {
     console.log(radioBtn);
-
-    if ($(radioBtn).attr("value") == $(radioBtn).attr("answer")) {
-      correct++;
-      console.log("answer correct" + correct);
-    } else {
-      incorrect++;
-      console.log("answer incorrect" + incorrect);
-    }
-    console.log(radioBtn.getAttribute("value"));
-    console.log(radioBtn.getAttribute("answer"));
+    $("input:checked").each(function () {
+      if ($(this).attr("outcome") === "correct") {
+        correct++;
+        $("#correct-text").text("Correct Answers: " + correct);
+        console.log("answer correct" + correct);
+      } else if ($(this).attr("outcome") === "incorrect") {
+        incorrect++;
+        $("#incorrect-text").text("Incorrect Answers: " + incorrect);
+        console.log("answer incorrect" + incorrect);
+      }
+      console.log(radioBtn.getAttribute("outcome"));
+      var unanswered = questions.length - correct - incorrect;
+      $("#unanswered-text").text("Unanswered: " + unanswered);
+    });
   }
 
   $("#correct-text").text("Correct Answers: " + correct);
   $("#incorrect-text").text("Incorrect Answers: " + incorrect);
-  $("#unanswerd-text").text("Unanswered: " + unanswered);
+  //$("#unanswered-text").text("Unanswered: " + unanswered);
 
   function startTimer() {
     clearInterval(timerId);
@@ -142,9 +153,16 @@ $(document).ready(function () {
         stop();
         $(".end").toggle();
         $(".game").css("display", "none");
+        evaluate();
       }
     }
   }
+  $(document).on("click", ".done-btn", function () {
+    stop();
+    $(".end").toggle();
+    $(".game").css("display", "none");
+    evaluate();
+  });
 
   $(".game").css("display", "none");
   $(".btn").click(function () {
